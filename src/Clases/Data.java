@@ -15,6 +15,7 @@ public class Data {
            userCount++;
     }
     
+    //Can use to obtain the data of users in another forms
     public Users[] getUsers (){
         return myUsers;
     }
