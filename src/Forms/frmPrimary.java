@@ -82,6 +82,11 @@ public class frmPrimary extends javax.swing.JFrame {
 
         jMenuItemProduct.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490229772_objects.png"))); // NOI18N
         jMenuItemProduct.setText("Products");
+        jMenuItemProduct.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProductActionPerformed(evt);
+            }
+        });
         mnuFile.add(jMenuItemProduct);
 
         jMenuItemUsr.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_U, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
@@ -185,6 +190,13 @@ public class frmPrimary extends javax.swing.JFrame {
     private void jMenuItemExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemExitActionPerformed
         System.exit(WIDTH);
     }//GEN-LAST:event_jMenuItemExitActionPerformed
+
+    private void jMenuItemProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProductActionPerformed
+        frmProducts myProducts = new frmProducts();
+        myProducts.setData(myData);
+        dpnDesktop.add(myProducts);
+        myProducts.show();
+    }//GEN-LAST:event_jMenuItemProductActionPerformed
 
     /**
      * @param args the command line arguments

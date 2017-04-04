@@ -7,19 +7,20 @@ package Forms;
 
 import Clases.Data;
 import Clases.Users;
+import Clases.Product;
+import Clases.Utility;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import org.omg.PortableInterceptor.USER_EXCEPTION;
-
 /**
  *
  * @author jalfonso2
  */
-public class frmusersinternal extends javax.swing.JInternalFrame {
+public class frmProducts extends javax.swing.JInternalFrame {
 
     //Create an object from the class Data
     private Data myData;
-    private int actUser = 0;
+    private int actProduct = 0;
     private Boolean newReg = false;
     private DefaultTableModel myTable;
 
@@ -28,7 +29,7 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
 
     }
 
-    public frmusersinternal() {
+    public frmProducts() {
         initComponents();
     }
 
@@ -41,36 +42,37 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fldID = new javax.swing.JTextField();
+        fldIDProduct = new javax.swing.JTextField();
         btnFirst = new javax.swing.JButton();
-        txtName = new javax.swing.JLabel();
+        txtDesc = new javax.swing.JLabel();
         btnPrev = new javax.swing.JButton();
-        fldName = new javax.swing.JTextField();
+        fldDescription = new javax.swing.JTextField();
         btnNext = new javax.swing.JButton();
-        txtLstName = new javax.swing.JLabel();
+        txtprice = new javax.swing.JLabel();
         btnLast = new javax.swing.JButton();
-        fldLastName = new javax.swing.JTextField();
+        fldPrice = new javax.swing.JTextField();
         btnEdit = new javax.swing.JButton();
-        txtPwd = new javax.swing.JLabel();
+        txtIIva = new javax.swing.JLabel();
         btnNew = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        cmbxProf = new javax.swing.JComboBox<>();
         btnCancel = new javax.swing.JButton();
-        txtProf = new javax.swing.JLabel();
         btnErrase = new javax.swing.JButton();
-        txtConfPwd = new javax.swing.JLabel();
         btnSearch = new javax.swing.JButton();
-        txtId = new javax.swing.JLabel();
-        fldPwd = new javax.swing.JPasswordField();
-        fldConfPwd = new javax.swing.JPasswordField();
+        txtIdProduct = new javax.swing.JLabel();
         txtConfPwd1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblTable = new javax.swing.JTable();
+        cmbIva = new javax.swing.JComboBox<>();
+        txtNote = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        fldTxtaNote = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Products");
+        setToolTipText("");
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
             }
@@ -89,7 +91,7 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        fldID.setEnabled(false);
+        fldIDProduct.setEnabled(false);
 
         btnFirst.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291512_DoubleChevronLeft.png"))); // NOI18N
         btnFirst.addActionListener(new java.awt.event.ActionListener() {
@@ -98,8 +100,8 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtName.setText("Name");
-        txtName.setEnabled(false);
+        txtDesc.setText("Description*");
+        txtDesc.setEnabled(false);
 
         btnPrev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291495_ChevronLeft.png"))); // NOI18N
         btnPrev.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +110,7 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        fldName.setEnabled(false);
+        fldDescription.setEnabled(false);
 
         btnNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291484_ChevronRight.png"))); // NOI18N
         btnNext.addActionListener(new java.awt.event.ActionListener() {
@@ -117,8 +119,8 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtLstName.setText("Last name");
-        txtLstName.setEnabled(false);
+        txtprice.setText("Price*");
+        txtprice.setEnabled(false);
 
         btnLast.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291501_DoubleChevronRight.png"))); // NOI18N
         btnLast.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +129,8 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        fldLastName.setEnabled(false);
+        fldPrice.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        fldPrice.setEnabled(false);
 
         btnEdit.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291729_pen-checkbox.png"))); // NOI18N
         btnEdit.addActionListener(new java.awt.event.ActionListener() {
@@ -136,8 +139,8 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtPwd.setText("Password");
-        txtPwd.setEnabled(false);
+        txtIIva.setText("IVA");
+        txtIIva.setEnabled(false);
 
         btnNew.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291803_add_cross_new_plus_create.png"))); // NOI18N
         btnNew.addActionListener(new java.awt.event.ActionListener() {
@@ -154,14 +157,6 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        cmbxProf.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select the profile", "Admin", "User" }));
-        cmbxProf.setEnabled(false);
-        cmbxProf.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbxProfActionPerformed(evt);
-            }
-        });
-
         btnCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490292060_Cancel.png"))); // NOI18N
         btnCancel.setEnabled(false);
         btnCancel.addActionListener(new java.awt.event.ActionListener() {
@@ -170,18 +165,12 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtProf.setText("Profile");
-        txtProf.setEnabled(false);
-
         btnErrase.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490291915_bin_cancel_close_cross_delete_empty_exit_garbage_minus_out_recycle_remove_trash.png"))); // NOI18N
         btnErrase.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnErraseActionPerformed(evt);
             }
         });
-
-        txtConfPwd.setText("Confirm Password");
-        txtConfPwd.setEnabled(false);
 
         btnSearch.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/1490292082_magnifier.png"))); // NOI18N
         btnSearch.addActionListener(new java.awt.event.ActionListener() {
@@ -190,15 +179,10 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             }
         });
 
-        txtId.setText("UserID");
-        txtId.setEnabled(false);
+        txtIdProduct.setText("ProductID*");
+        txtIdProduct.setEnabled(false);
 
-        fldPwd.setEnabled(false);
-
-        fldConfPwd.setEnabled(false);
-
-        txtConfPwd1.setText("All the fields are obligatories");
-        txtConfPwd1.setEnabled(false);
+        txtConfPwd1.setText("*Obligatory field");
 
         tblTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -213,6 +197,21 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tblTable);
 
+        cmbIva.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0%", "10%", "16%" }));
+        cmbIva.setEnabled(false);
+        cmbIva.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbIvaActionPerformed(evt);
+            }
+        });
+
+        txtNote.setText("Notes");
+        txtNote.setEnabled(false);
+
+        fldTxtaNote.setColumns(20);
+        fldTxtaNote.setRows(5);
+        jScrollPane2.setViewportView(fldTxtaNote);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,86 +219,84 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDesc, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtNote, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtprice, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtIdProduct, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fldDescription, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtLstName, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtConfPwd, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtId, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtPwd, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(fldPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fldConfPwd, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(fldID, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtProf)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbxProf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(fldName, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(fldLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(txtConfPwd1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnErrase, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(13, 13, 13)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(fldPrice)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtIIva)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbIva, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fldIDProduct, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(txtConfPwd1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(btnFirst, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNext, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnLast, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnNew, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnErrase, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jScrollPane1)
+                .addGap(12, 12, 12))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(txtProf, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtId)
-                        .addComponent(fldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(cmbxProf)))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtIdProduct)
+                    .addComponent(fldIDProduct))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtLstName))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(fldName)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(fldLastName)))
+                    .addComponent(txtDesc)
+                    .addComponent(fldDescription))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtPwd)
-                    .addComponent(fldPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(fldPrice)
+                    .addComponent(txtprice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(txtIIva, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cmbIva)))
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtConfPwd)
-                    .addComponent(fldConfPwd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtNote)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2))
+                .addGap(18, 18, 18)
                 .addComponent(txtConfPwd1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -314,16 +311,12 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
                     .addComponent(btnErrase, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
-                .addGap(8, 8, 8))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbxProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbxProfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmbxProfActionPerformed
 
     private void btnNewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNewActionPerformed
         //If press the button all the options will be disable except save and cancel (this is only design to handling).
@@ -340,21 +333,17 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
         btnCancel.setEnabled(true);
 
         //Set enable the fields to create a new user
-        fldID.setEnabled(true);
-        fldConfPwd.setEnabled(true);
-        fldLastName.setEnabled(true);
-        fldName.setEnabled(true);
-        fldPwd.setEnabled(true);
-        cmbxProf.setEnabled(true);
+        fldIDProduct.setEnabled(true);
+        fldPrice.setEnabled(true);
+        fldDescription.setEnabled(true);
+        cmbIva.setEnabled(true);
         //Set in blank the fields to create a new user
-        fldID.setText("");
-        fldConfPwd.setText("");
-        fldLastName.setText("");
-        fldName.setText("");
-        fldPwd.setText("");
-        cmbxProf.setSelectedIndex(0);
+        fldIDProduct.setText("");
+        fldPrice.setText("");
+        fldDescription.setText("");
+        cmbIva.setSelectedIndex(0);
         //Set focus in the first field when the textfields be enable
-        fldID.requestFocus();
+        fldIDProduct.requestFocus();
 
         //Set the boolean val in true
         newReg = true;
@@ -377,14 +366,13 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
         btnCancel.setEnabled(true);
 
         //Set enable the fields to edit a new user
-        fldConfPwd.setEnabled(true);
-        fldLastName.setEnabled(true);
-        fldName.setEnabled(true);
-        fldPwd.setEnabled(true);
-        cmbxProf.setEnabled(true);
+        fldIDProduct.setEnabled(true);
+        fldPrice.setEnabled(true);
+        fldDescription.setEnabled(true);
+        cmbIva.setEnabled(true);
 
         //Set focus in the first field when the textfields be enable
-        fldName.requestFocus();
+        fldDescription.requestFocus();
     }//GEN-LAST:event_btnEditActionPerformed
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
@@ -402,98 +390,71 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
         btnCancel.setEnabled(false);
 
         //Set disabled when return to view the users
-        fldID.setEnabled(false);
-        fldConfPwd.setEnabled(false);
-        fldLastName.setEnabled(false);
-        fldName.setEnabled(false);
-        fldPwd.setEnabled(false);
-        cmbxProf.setEnabled(false);
+        fldIDProduct.setEnabled(false);
+        fldPrice.setEnabled(false);
+        fldDescription.setEnabled(false);
+        cmbIva.setEnabled(false);
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
-        String pwd = new String(fldPwd.getPassword());
-        String confPwd = new String(fldConfPwd.getPassword());
         //Create a position of the user
-        int pos = myData.userPosition(fldID.getText());
+        int pos = myData.productPosition(fldIDProduct.getText());
 
         //Create a mesage if the user dont ingress any character in 
-        if (fldID.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Please write an UserId ");
-            fldID.requestFocus();
+        if (fldIDProduct.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Please write an productId ");
+            fldIDProduct.requestFocus();
             return;
         }
 
-        if (cmbxProf.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Select an option");
-            cmbxProf.requestFocus();
+        if (fldDescription.getText().equals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Please write a description of product.");
+            fldDescription.requestFocus();
             return;
         }
 
-        if (fldName.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Please write a name.");
-            fldName.requestFocus();
+        if (Utility.isNumeric(fldPrice.getText())) {
+            JOptionPane.showMessageDialog(rootPane, "Please write a price val");
+            fldPrice.requestFocus();
             return;
         }
-
-        if (fldLastName.getText().equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Please write a last name");
-            fldLastName.requestFocus();
+        
+        int price = Integer.parseInt(fldPrice.getText());
+        
+        if (price <= 0) {
+            JOptionPane.showMessageDialog(rootPane, "The value need be mayor to zero");
+            fldPrice.requestFocus();
             return;
         }
-
-        if (pwd.equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Please ingress a Password");
-            fldPwd.setText("");
-            fldConfPwd.setText("");
-            fldPwd.requestFocus();
-            return;
-        }
-
-        if (confPwd.equals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Confirm your Password");
-            fldConfPwd.setText("");
-            fldPwd.requestFocus();
-            return;
-        }
-
-        if (!confPwd.equals(pwd)) {
-            JOptionPane.showMessageDialog(rootPane, "The password must match");
-            fldPwd.setText("");
-            fldConfPwd.setText("");
-            fldPwd.requestFocus();
-            return;
-        }
-
-        //If the user is new validate the user exist
+        
+        //If the product is new validate the user exist
         if (newReg) {
             if (pos != -1) {
-                JOptionPane.showMessageDialog(rootPane, "The user exist now in the data base");
-                fldID.requestFocus();
+                JOptionPane.showMessageDialog(rootPane, "The product exist now in the data base");
+                fldIDProduct.requestFocus();
                 return;
             }
         } else {
             if (pos == -1) {
-                JOptionPane.showMessageDialog(rootPane, "The user not exist");
-                fldID.requestFocus();
+                JOptionPane.showMessageDialog(rootPane, "The product not exist");
+                fldIDProduct.requestFocus();
                 return;
             }
         }
 
         //Create the user in the object
-        Users myUser = new Users(
-                fldID.getText(),
-                fldName.getText(),
-                fldLastName.getText(),
-                pwd,
-                cmbxProf.getSelectedIndex());
-
+        Product myProduct = new Product(
+                fldIDProduct.getText(),
+                fldDescription.getText(),
+                price,
+                cmbIva.getSelectedIndex());
         String message;
 
         if (newReg) {
-            message = myData.addUser(myUser);
+            message = myData.addProduct(myProduct);
         } else {
-            message = myData.modUser(myUser, pos);
+            message = myData.modProduct(myProduct, pos);
         }
 
         JOptionPane.showMessageDialog(rootPane, message);
@@ -512,15 +473,13 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
         btnCancel.setEnabled(false);
 
         //Set disabled when return to view the users
-        fldID.setEnabled(false);
-        fldConfPwd.setEnabled(false);
-        fldLastName.setEnabled(false);
-        fldName.setEnabled(false);
-        fldPwd.setEnabled(false);
-        cmbxProf.setEnabled(false);
+        fldIDProduct.setEnabled(false);
+        fldDescription.setEnabled(false);        
+        fldPrice.setEnabled(false);
+        cmbIva.setEnabled(false);
         //Set the boolean val in false
         newReg = false;
-        
+
         //Act the info of the Table
         infoTable();
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -532,28 +491,28 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_formInternalFrameOpened
 
     private void btnFirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFirstActionPerformed
-        actUser = 0;
+        actProduct = 0;
         showReg();
     }//GEN-LAST:event_btnFirstActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        actUser++;
-        if (actUser == myData.numUsers()) {
-            actUser = 0;
+        actProduct++;
+        if (actProduct == myData.numProducts()) {
+            actProduct = 0;
         }
         showReg();
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        actUser--;
-        if (actUser == -1) {
-            actUser = myData.numUsers() - 1;
+        actProduct--;
+        if (actProduct == -1) {
+            actProduct = myData.numProducts()- 1;
         }
         showReg();
     }//GEN-LAST:event_btnPrevActionPerformed
 
     private void btnLastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLastActionPerformed
-        actUser = myData.numUsers() - 1;
+        actProduct = myData.numProducts()- 1;
         showReg();
     }//GEN-LAST:event_btnLastActionPerformed
 
@@ -563,61 +522,69 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
             return;
         }
         String msg;
-        msg = myData.deleteUser(actUser);
+        msg = myData.deleteProduct(actProduct);
         JOptionPane.showMessageDialog(rootPane, msg);
-        actUser = 0;
+        actProduct = 0;
         showReg();
-        
+
         //Act the info of the Table
         infoTable();
     }//GEN-LAST:event_btnErraseActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        String User = JOptionPane.showInputDialog("Insert user ID");
-        if (User.equals("")) {
+        String product = JOptionPane.showInputDialog("Insert product ID");
+        if (product.equals("")) {
             return;
         }
-        int pos = myData.userPosition(User);
-        if (pos == -1){
-            JOptionPane.showMessageDialog(rootPane, "User not exist");
+        int pos = myData.productPosition(product);
+        if (pos == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Product not exist");
             return;
         }
-        actUser = pos;
+        actProduct = pos;
         showReg();
     }//GEN-LAST:event_btnSearchActionPerformed
 
+    private void cmbIvaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbIvaActionPerformed
+        
+    }//GEN-LAST:event_cmbIvaActionPerformed
+
     private void showReg() {
 
-        fldID.setText(myData.getUsers()[actUser].getIdUser());
-        fldName.setText(myData.getUsers()[actUser].getName());
-        fldLastName.setText(myData.getUsers()[actUser].getLastName());
-        fldPwd.setText(myData.getUsers()[actUser].getPassword());
-        fldConfPwd.setText(myData.getUsers()[actUser].getPassword());
-        cmbxProf.setSelectedIndex(myData.getUsers()[actUser].getProfile());
+        fldIDProduct.setText(myData.getProducts()[actProduct].getIdProduct());
+        fldDescription.setText(myData.getProducts()[actProduct].getProductDescription());
+        fldPrice.setText("" + myData.getProducts()[actProduct].getProductPrice());
+        fldTxtaNote.setText(myData.getProducts()[actProduct].getNote());
+        cmbIva.setSelectedIndex(myData.getProducts()[actProduct].getIva());
 
     }
-
-    private void infoTable(){
-        String titles[] = {"ID Users", "Name", "Last Name", "Profile"};
-        String reg[] = new String[4];
+  
+    private void infoTable() {
+        String titles[] = {"ID Product", "Description", "Price", "Iva", "Notes"};
+        String reg[] = new String[5];
         myTable = new DefaultTableModel(null, titles);
-        for (int i = 0; i < myData.numUsers(); i++){
-            reg[0] = myData.getUsers()[i].getIdUser();
-            reg[1] = myData.getUsers()[i].getName();
-            reg[2] = myData.getUsers()[i].getLastName();
-            reg[3] = profile(myData.getUsers()[i].getProfile());
+        for (int i = 0; i < myData.numProducts(); i++) {
+            reg[0] = myData.getProducts()[i].getIdProduct();
+            reg[1] = myData.getProducts()[i].getProductDescription();
+            reg[2] = "" + myData.getProducts()[i].getProductPrice();
+            reg[3] = profile(myData.getProducts()[i].getIva());
+            reg[4] = myData.getProducts()[i].getNote();
             myTable.addRow(reg);
         }
         tblTable.setModel(myTable);
     }
-    
-    private String profile(int idProfile) {
-        if (idProfile == 1) {
-           return "Admin";
-        } else {
-            return "User";
+
+ 
+    private String profile(int idIva)
+    {
+        switch(idIva){
+            case 0: return "0%";
+            case 1: return "10%";
+            case 2: return "16%";
+            default: return "Not Iva";
         }
     }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnEdit;
@@ -629,20 +596,19 @@ public class frmusersinternal extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnPrev;
     private javax.swing.JButton btnSave;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JComboBox<String> cmbxProf;
-    private javax.swing.JPasswordField fldConfPwd;
-    private javax.swing.JTextField fldID;
-    private javax.swing.JTextField fldLastName;
-    private javax.swing.JTextField fldName;
-    private javax.swing.JPasswordField fldPwd;
+    private javax.swing.JComboBox<String> cmbIva;
+    private javax.swing.JTextField fldDescription;
+    private javax.swing.JTextField fldIDProduct;
+    private javax.swing.JTextField fldPrice;
+    private javax.swing.JTextArea fldTxtaNote;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblTable;
-    private javax.swing.JLabel txtConfPwd;
     private javax.swing.JLabel txtConfPwd1;
-    private javax.swing.JLabel txtId;
-    private javax.swing.JLabel txtLstName;
-    private javax.swing.JLabel txtName;
-    private javax.swing.JLabel txtProf;
-    private javax.swing.JLabel txtPwd;
+    private javax.swing.JLabel txtDesc;
+    private javax.swing.JLabel txtIIva;
+    private javax.swing.JLabel txtIdProduct;
+    private javax.swing.JLabel txtNote;
+    private javax.swing.JLabel txtprice;
     // End of variables declaration//GEN-END:variables
 }
